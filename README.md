@@ -1,6 +1,6 @@
 # Stream Deck Icon Generator
 
-A web-based tool for creating custom Stream Deck button icons with transparent backgrounds.
+A web-based tool for creating consistent Stream Deck button icons.
 
 ## Features
 
@@ -9,18 +9,13 @@ A web-based tool for creating custom Stream Deck button icons with transparent b
   - Font Awesome library with 90+ curated icons
   - Material Symbols library with 90+ curated icons
   - Upload your own custom images
-- **Text Customization**:
-  - Roboto Condensed font
-  - Adjustable size (12-48px)
-  - Color picker
-  - Alignment options (left, center, right)
-- **Multi-Color Preview**: See your icon on 5 different background colors simultaneously
+- **Multi-Color Preview**: See your icon on the 5 style guide colors
 - **Transparent Export**: Download as PNG with alpha channel (no background color)
 - **Real-time Preview**: All changes update instantly
 
 ## Preview Colors
 
-The preview system shows your icon on these 5 colors from the TPCC color palette:
+The preview system shows your icon on these 5 colors from the color palette:
 - Primary (Teal): `#3D5B58`
 - Secondary (Gray): `#373A36`
 - Positive (Green): `#406B47`
@@ -64,35 +59,9 @@ python3 -m http.server 8000
 1. Push this repository to GitHub
 2. Go to repository Settings → Pages
 3. Select source: `main` branch, root directory
-4. Your site will be available at: `https://[username].github.io/iconGenerator/`
-
-## File Structure
-
-```
-iconGenerator/
-├── index.html              # Main application page
-├── css/
-│   └── style.css          # Application styles
-├── js/
-│   ├── app.js             # Main application logic
-│   ├── canvas-renderer.js # Canvas drawing engine
-│   ├── icon-manager.js    # Icon library management
-│   └── export.js          # PNG export functionality
-├── assets/
-│   ├── backgrounds/
-│   │   ├── action-base.png    # Action button gradient
-│   │   └── info-base.png      # Info button gradient
-│   └── fonts/
-│       └── Font-Awesome/      # Font Awesome library
-└── README.md
-```
+4. Your site will be available at: `https://[username].github.io/sdIconGenerator/`
 
 ## Browser Compatibility
-
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
 
 Requires modern browser support for:
 - HTML5 Canvas API
@@ -109,4 +78,4 @@ Requires modern browser support for:
 
 ## License
 
-This project is open source and available for personal and commercial use.
+MIT
