@@ -80,6 +80,11 @@
     "keywords": "shure"
   },
   {
+    "file": "song-play.svg",
+    "name": "song-play",
+    "keywords": "song play"
+  },
+  {
     "file": "video-play.svg",
     "name": "video-play",
     "keywords": "video play"
