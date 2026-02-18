@@ -39,6 +39,7 @@ let iconManager;
 let imageExporter;
 let renderDebounceTimer;
 let lastSearchQuery = '';
+let preserveCustomIconColor = true;
 
 /**
  * Initialize the application
@@ -77,8 +78,15 @@ async function init() {
   // Set up event listeners
   setupEventListeners();
 
-  // Populate icon grid
-  populateIconGrid();
+  // Populate icon grid with default search
+  const iconSearch = document.getElementById('iconSearch');
+  if (iconSearch) {
+    iconSearch.value = 'microphone';
+    lastSearchQuery = 'microphone';
+    populateIconGrid('microphone');
+  } else {
+    populateIconGrid();
+  }
   renderCustomIconGrid();
 
   // Initialize filename from default text
@@ -126,6 +134,22 @@ function setupEventListeners() {
       populateIconGrid(query);
     });
   });
+
+  // Custom icon color toggle
+  const customColorToggle = document.getElementById('customColorToggle');
+  if (customColorToggle) {
+    preserveCustomIconColor = customColorToggle.checked;
+
+    customColorToggle.addEventListener('change', () => {
+      preserveCustomIconColor = customColorToggle.checked;
+      if (state.selectedIcon && state.selectedIcon.type === 'image' &&
+          state.selectedIcon.path && state.selectedIcon.path.startsWith('assets/custom-icons/')) {
+        state.selectedIcon.preserveColor = preserveCustomIconColor;
+        debouncedRender();
+      }
+      renderCustomIconGrid();
+    });
+  }
 
   // Icon upload
   const iconUpload = document.getElementById('iconUpload');
@@ -274,10 +298,10 @@ function renderCustomIconGrid() {
     return;
   }
 
-  renderImageIconGrid(customIcons, customGrid, lastSearchQuery);
+  renderImageIconGrid(customIcons, customGrid, lastSearchQuery, preserveCustomIconColor);
 }
 
-function renderImageIconGrid(icons, gridElement, searchQuery) {
+function renderImageIconGrid(icons, gridElement, searchQuery, preserveColor = false) {
   icons.forEach(icon => {
     const iconItem = document.createElement('div');
     iconItem.className = 'icon-item';
@@ -297,7 +321,8 @@ function renderImageIconGrid(icons, gridElement, searchQuery) {
     iconItem.addEventListener('click', () => {
       state.selectedIcon = {
         type: 'image',
-        path: icon.path
+        path: icon.path,
+        preserveColor
       };
       populateIconGrid(searchQuery);
       renderCustomIconGrid();

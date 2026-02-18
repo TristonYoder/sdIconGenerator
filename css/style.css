@@ -118,6 +118,9 @@ body {
 }
 
 .icon-section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
   font-weight: 700;
   color: var(--text);
   letter-spacing: 0.2px;
@@ -213,6 +216,65 @@ body {
   object-fit: contain;
   filter: brightness(0) invert(1);
   pointer-events: none;
+}
+
+.custom-color-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.custom-color-toggle input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.custom-color-toggle .toggle-track {
+  width: 42px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--bg-light);
+  border: 1px solid var(--border-color);
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.custom-color-toggle .toggle-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transform: translateX(0);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.custom-color-toggle input:checked + .toggle-track {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.custom-color-toggle input:checked + .toggle-track .toggle-thumb {
+  transform: translateX(20px);
+  background: var(--accent);
+}
+
+.custom-color-toggle input:focus-visible + .toggle-track {
+  box-shadow: 0 0 0 3px rgba(235, 231, 23, 0.35);
+}
+
+.custom-color-toggle .toggle-label {
+  line-height: 1.2;
+}
+
+.custom-icon-grid .icon-item.image-icon img {
+  filter: none;
 }
 
 /* Upload Area */

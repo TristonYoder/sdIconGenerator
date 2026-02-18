@@ -123,6 +123,7 @@ export class ButtonRenderer {
       // Render file-based image (PNG/SVG)
       const img = await this.loadImage(iconOptions.path);
       const isSvg = iconOptions.path.toLowerCase().endsWith('.svg');
+      const preserveColor = iconOptions.preserveColor === true;
 
       const imgAspect = img.width / img.height;
       let drawWidth, drawHeight;
@@ -138,7 +139,7 @@ export class ButtonRenderer {
       const drawX = centerX - drawWidth / 2;
       const drawY = iconCenterY - drawHeight / 2;
 
-      if (isSvg) {
+      if (isSvg && !preserveColor) {
         const tempCanvas = document.createElement('canvas');
         tempCanvas.width = Math.ceil(drawWidth);
         tempCanvas.height = Math.ceil(drawHeight);
