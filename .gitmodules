@@ -1,0 +1,3 @@
+[submodule "assets/fonts/Font-Awesome"]
+	path = assets/fonts/Font-Awesome
+	url = https://github.com/FortAwesome/Font-Awesome.git
