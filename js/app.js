@@ -117,35 +117,6 @@ function setupEventListeners() {
     });
   });
 
-  // Icon source toggle
-  const iconSourceButtons = document.querySelectorAll('#iconSourceToggle button');
-  iconSourceButtons.forEach(btn => {
-    btn.addEventListener('click', async () => {
-      iconSourceButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const source = btn.getAttribute('data-source');
-
-      if (source === 'upload') {
-        document.getElementById('iconLibrary').classList.add('hidden');
-        document.getElementById('uploadArea').classList.remove('hidden');
-      } else {
-        document.getElementById('iconLibrary').classList.remove('hidden');
-        document.getElementById('uploadArea').classList.add('hidden');
-
-        state.iconLibrary = source;
-        iconManager.setLibrary(source);
-        await iconManager.loadSvgIcons();
-
-        populateIconGrid();
-        renderCustomIconGrid();
-
-        // Set default icon for the new library
-        state.selectedIcon = iconManager.getDefaultIcon();
-        debouncedRender();
-      }
-    });
-  });
-
   // Icon search
   const iconSearch = document.getElementById('iconSearch');
   iconSearch.addEventListener('input', (e) => {

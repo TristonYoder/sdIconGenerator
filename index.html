@@ -28,31 +28,36 @@
 
         <!-- Icon Source -->
         <section class="control-group">
-          <h2>Icon Source</h2>
-          <div class="toggle-buttons icon-source-grid" id="iconSourceToggle">
-            <button class="active" data-source="svgpng">Icon Search</button>
-            <button data-source="upload">Upload</button>
-          </div>
+          <h2>Choose Icon</h2>
 
           <!-- Icon Library -->
           <div class="icon-library" id="iconLibrary">
-            <div class="custom-icons">
-              <div class="custom-icons-header">
+            <div class="icon-section">
+              <div class="icon-section-header">
+                <span>Icon Search</span>
+              </div>
+              <input type="search" placeholder="Search icons..." id="iconSearch">
+              <div class="icon-grid" id="iconGrid"></div>
+            </div>
+
+            <div class="icon-section">
+              <div class="icon-section-header">
                 <span>Custom Icons</span>
-                <span class="custom-icons-hint">Add SVGs to `assets/custom-icons/` and list in `index.json`</span>
               </div>
               <div class="icon-grid custom-icon-grid" id="customIconGrid"></div>
             </div>
-            <input type="search" placeholder="Search icons..." id="iconSearch">
-            <div class="icon-grid" id="iconGrid"></div>
-          </div>
 
-          <!-- Upload Area -->
-          <div class="upload-area hidden" id="uploadArea">
-            <label for="iconUpload" class="upload-label">
-              <span class="upload-text">Choose Icon Image</span>
-              <input type="file" accept="image/*" id="iconUpload">
-            </label>
+            <div class="icon-section">
+              <div class="icon-section-header">
+                <span>Upload</span>
+              </div>
+              <div class="upload-area" id="uploadArea">
+                <label for="iconUpload" class="upload-label">
+                  <span class="upload-text">Choose Icon Image</span>
+                  <input type="file" accept="image/*" id="iconUpload">
+                </label>
+              </div>
+            </div>
           </div>
         </section>
 
