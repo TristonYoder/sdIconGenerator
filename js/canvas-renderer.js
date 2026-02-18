@@ -56,10 +56,8 @@ export class ButtonRenderer {
     const activeColor = '#ebe717';
     const primaryColor = '#3D5B58';
     const isActiveBackground = backgroundColor && backgroundColor.toLowerCase() === activeColor.toLowerCase();
-    // Active background → white text/icons
-    // Non-active backgrounds → primary (teal) text/icons
-    const textColor = isActiveBackground ? '#FFFFFF' : (backgroundColor ? primaryColor : '#FFFFFF');
-    const iconColor = isActiveBackground ? '#FFFFFF' : (backgroundColor ? primaryColor : '#FFFFFF');
+    const textColor = isActiveBackground ? primaryColor : '#FFFFFF';
+    const iconColor = isActiveBackground ? primaryColor : '#FFFFFF';
 
     // 3. Calculate text layout to determine icon size
     let textHeight = 0;
