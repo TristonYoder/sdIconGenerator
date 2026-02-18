@@ -85,10 +85,16 @@ MIT
 To add your own SVGs:
 
 1. Drop SVG files in `assets/custom-icons/`
-2. Add entries to `assets/custom-icons/index.json`:
+2. Generate `assets/custom-icons/index.json`:
 
 ```json
 [
   { "file": "my-icon.svg", "name": "my-icon", "keywords": "custom mic audio" }
 ]
+```
+
+Generate the index with:
+
+```bash
+python3 scripts/generate-custom-icons-index.py
 ```

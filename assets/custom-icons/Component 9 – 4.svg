@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="92.031" height="83.25" viewBox="0 0 92.031 83.25">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 10px;
+      }
+    </style>
+  </defs>
+  <g id="Component_9_4" data-name="Component 9 – 4" transform="translate(0 3.625)">
+    <g id="video-play" transform="translate(0 4.592)">
+      <path id="Icon_material-outline-ondemand-video" data-name="Icon material-outline-ondemand-video" class="cls-1" d="M85.019,4.5H9.852A8.376,8.376,0,0,0,1.5,12.852V62.963a8.376,8.376,0,0,0,8.352,8.352H85.019a8.376,8.376,0,0,0,8.352-8.352V12.852A8.376,8.376,0,0,0,85.019,4.5Zm0,58.463H9.852V12.852H85.019Z" transform="translate(-1.5 -4.5)"/>
+      <path id="Icon_fa-regular-circle-play" data-name="Icon fa-regular-circle-play" class="cls-1" d="M22.663,17.7a2.892,2.892,0,0,1,2.925.06L42.919,28.356a2.891,2.891,0,0,1,0,4.935L25.588,43.882a2.92,2.92,0,0,1-2.925.06,2.871,2.871,0,0,1-1.48-2.515V20.22A2.871,2.871,0,0,1,22.663,17.7Z" transform="translate(14.188 2.596)"/>
+    </g>
+    <line id="Line_2" data-name="Line 2" class="cls-2" x2="80" y2="76" transform="translate(8.587)"/>
+  </g>
+</svg>
