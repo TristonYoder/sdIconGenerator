@@ -139,7 +139,7 @@ export class ButtonRenderer {
       const drawX = centerX - drawWidth / 2;
       const drawY = iconCenterY - drawHeight / 2;
 
-      if (isSvg && !preserveColor) {
+      if (!preserveColor) {
         const tempCanvas = document.createElement('canvas');
         tempCanvas.width = Math.ceil(drawWidth);
         tempCanvas.height = Math.ceil(drawHeight);

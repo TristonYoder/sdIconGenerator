@@ -73,20 +73,16 @@ async function init() {
     iconManager.loadSvgIcons(),
     iconManager.loadCustomIcons()
   ]);
-  state.selectedIcon = iconManager.getDefaultIcon();
+  const defaultCustomIcon = iconManager.getCustomIcons().find(icon => icon.name === 'TP');
+  state.selectedIcon = defaultCustomIcon
+    ? { type: 'image', path: defaultCustomIcon.path, preserveColor: false }
+    : iconManager.getDefaultIcon();
 
   // Set up event listeners
   setupEventListeners();
 
-  // Populate icon grid with default search
-  const iconSearch = document.getElementById('iconSearch');
-  if (iconSearch) {
-    iconSearch.value = 'microphone';
-    lastSearchQuery = 'microphone';
-    populateIconGrid('microphone');
-  } else {
-    populateIconGrid();
-  }
+  // Populate icon grid
+  populateIconGrid();
   renderCustomIconGrid();
 
   // Initialize filename from default text
