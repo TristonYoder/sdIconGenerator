@@ -308,6 +308,8 @@ export class IconManager {
   constructor() {
     this.currentLibrary = 'fontawesome';
     this.icons = FONT_AWESOME_ICONS;
+    this.svgIcons = null;
+    this.svgIconsPromise = null;
   }
 
   /**
@@ -325,6 +327,8 @@ export class IconManager {
       this.icons = BOOTSTRAP_ICONS;
     } else if (library === 'ionicons') {
       this.icons = IONICONS;
+    } else if (library === 'svgpng') {
+      this.icons = this.svgIcons || [];
     }
   }
 
@@ -339,6 +343,17 @@ export class IconManager {
    * Search icons by name or keywords
    */
   searchIcons(query) {
+    if (this.currentLibrary === 'svgpng') {
+      const searchTerm = (query || '').toLowerCase().trim();
+      if (!searchTerm) {
+        return [];
+      }
+
+      return (this.svgIcons || []).filter(icon => {
+        return icon.keywords.includes(searchTerm);
+      }).slice(0, 200);
+    }
+
     if (!query || query.trim() === '') {
       return this.icons;
     }
@@ -348,6 +363,56 @@ export class IconManager {
       return icon.name.toLowerCase().includes(searchTerm) ||
              icon.keywords.toLowerCase().includes(searchTerm);
     });
+  }
+
+  /**
+   * Load SVG/PNG icon index from Font Awesome metadata
+   */
+  async loadSvgIcons() {
+    if (this.svgIcons) {
+      return this.svgIcons;
+    }
+    if (this.svgIconsPromise) {
+      return this.svgIconsPromise;
+    }
+
+    this.svgIconsPromise = fetch('assets/fonts/Font-Awesome/metadata/icons.json')
+      .then(response => response.json())
+      .then(data => {
+        const icons = [];
+        const styleOrder = ['solid', 'regular', 'brands'];
+
+        Object.entries(data).forEach(([name, meta]) => {
+          const free = meta.free || meta.styles || [];
+          const style = styleOrder.find(candidate => free.includes(candidate));
+          if (!style) {
+            return;
+          }
+
+          const terms = (meta.search && meta.search.terms) ? meta.search.terms : [];
+          const label = meta.label || '';
+          const keywords = [name, label, ...terms].join(' ').toLowerCase();
+
+          icons.push({
+            name,
+            path: `assets/fonts/Font-Awesome/svgs/${style}/${name}.svg`,
+            keywords
+          });
+        });
+
+        this.svgIcons = icons;
+        if (this.currentLibrary === 'svgpng') {
+          this.icons = icons;
+        }
+        return icons;
+      })
+      .catch(error => {
+        console.warn('Failed to load SVG icon index:', error);
+        this.svgIcons = [];
+        return [];
+      });
+
+    return this.svgIconsPromise;
   }
 
   /**
@@ -362,11 +427,19 @@ export class IconManager {
       material: { type: 'material', fontFamily: 'Material Symbols Outlined', weight: '400' },
       lineicons: { type: 'lineicons', fontFamily: 'LineIcons', weight: '400' },
       bootstrap: { type: 'bootstrap', fontFamily: 'bootstrap-icons', weight: '400' },
-      ionicons: { type: 'ionicons', fontFamily: 'Ionicons', weight: '400' }
+      ionicons: { type: 'ionicons', fontFamily: 'Ionicons', weight: '400' },
+      svgpng: { type: 'image' }
     };
 
     const config = libraryConfig[this.currentLibrary];
     if (!config) return null;
+
+    if (config.type === 'image') {
+      return {
+        type: 'image',
+        path: icon.path
+      };
+    }
 
     return {
       type: config.type,
@@ -381,6 +454,12 @@ export class IconManager {
    * Get default icon
    */
   getDefaultIcon() {
-    return this.getIconData('home');
+    if (this.icons.length === 0) {
+      return null;
+    }
+
+    const preferredName = this.currentLibrary === 'svgpng' ? 'microphone-lines' : 'home';
+    const preferred = this.icons.find(icon => icon.name === preferredName) || this.icons[0];
+    return this.getIconData(preferred.name);
   }
 }

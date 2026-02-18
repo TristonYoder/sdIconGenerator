@@ -134,6 +134,14 @@ body {
   border: 1px solid var(--border-color);
 }
 
+.icon-empty {
+  grid-column: 1 / -1;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
 .icon-grid::-webkit-scrollbar {
   width: 8px;
 }
@@ -177,6 +185,14 @@ body {
 .icon-item.selected {
   border-color: var(--accent);
   background: rgba(235, 231, 23, 0.2);
+}
+
+.icon-item.image-icon img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  pointer-events: none;
 }
 
 /* Upload Area */

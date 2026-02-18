@@ -119,6 +119,40 @@ export class ButtonRenderer {
       const drawY = iconCenterY - drawHeight / 2;
 
       this.ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
+    } else if (iconOptions.type === 'image' && iconOptions.path) {
+      // Render file-based image (PNG/SVG)
+      const img = await this.loadImage(iconOptions.path);
+      const isSvg = iconOptions.path.toLowerCase().endsWith('.svg');
+
+      const imgAspect = img.width / img.height;
+      let drawWidth, drawHeight;
+
+      if (imgAspect > 1) {
+        drawWidth = this.iconSize;
+        drawHeight = this.iconSize / imgAspect;
+      } else {
+        drawHeight = this.iconSize;
+        drawWidth = this.iconSize * imgAspect;
+      }
+
+      const drawX = centerX - drawWidth / 2;
+      const drawY = iconCenterY - drawHeight / 2;
+
+      if (isSvg) {
+        const tempCanvas = document.createElement('canvas');
+        tempCanvas.width = Math.ceil(drawWidth);
+        tempCanvas.height = Math.ceil(drawHeight);
+        const tempCtx = tempCanvas.getContext('2d');
+
+        tempCtx.drawImage(img, 0, 0, drawWidth, drawHeight);
+        tempCtx.globalCompositeOperation = 'source-in';
+        tempCtx.fillStyle = '#FFFFFF';
+        tempCtx.fillRect(0, 0, drawWidth, drawHeight);
+
+        this.ctx.drawImage(tempCanvas, drawX, drawY, drawWidth, drawHeight);
+      } else {
+        this.ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
+      }
     } else {
       // Render font icon (fontawesome, material, lineicons, bootstrap, ionicons)
       const fontWeight = iconOptions.weight || '400';
