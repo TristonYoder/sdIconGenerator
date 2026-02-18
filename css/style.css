@@ -96,6 +96,7 @@ header p {
   border: 2px solid var(--color-primary);
   border-radius: var(--border-radius);
   cursor: pointer;
+  font-family: 'Roboto Condensed', sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
   transition: all 0.2s;
@@ -258,7 +259,7 @@ select {
   border-radius: var(--border-radius);
   font-size: 0.95rem;
   width: 100%;
-  font-family: inherit;
+  font-family: 'Roboto Condensed', sans-serif;
   resize: vertical;
 }
 
@@ -336,6 +337,7 @@ input[type="range"]::-moz-range-thumb {
   cursor: pointer;
   transition: all 0.2s;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .color-btn:hover {
@@ -408,9 +410,10 @@ input[type="range"]::-moz-range-thumb {
   flex: 1;
   padding: 1rem 2rem;
   background: var(--accent);
-  color: white;
+  color: var(--color-primary);
   border: none;
   border-radius: var(--border-radius);
+  font-family: 'Roboto Condensed', sans-serif;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
