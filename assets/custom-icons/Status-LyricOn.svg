@@ -1,0 +1,17 @@
+<svg id="Status-LyricOn" xmlns="http://www.w3.org/2000/svg" width="91.871" height="66.815" viewBox="0 0 91.871 66.815">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        font-size: 9px;
+        font-family: RobotoCondensed-Bold, Roboto Condensed;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <path id="Icon_material-outline-ondemand-video" data-name="Icon material-outline-ondemand-video" class="cls-1" d="M85.019,4.5H9.852A8.376,8.376,0,0,0,1.5,12.852V62.963a8.376,8.376,0,0,0,8.352,8.352H85.019a8.376,8.376,0,0,0,8.352-8.352V12.852A8.376,8.376,0,0,0,85.019,4.5Zm0,58.463H9.852V12.852H85.019Z" transform="translate(-1.5 -4.5)"/>
+  <text id="NVR_GNNA_GV_U_UP" data-name="NVR GNNA GV U UP" class="cls-2" transform="translate(46 27)"><tspan x="-35.801" y="0">NVR GNNA GV U UP</tspan></text>
+</svg>

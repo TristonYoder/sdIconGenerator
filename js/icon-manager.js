@@ -310,6 +310,8 @@ export class IconManager {
     this.icons = FONT_AWESOME_ICONS;
     this.svgIcons = null;
     this.svgIconsPromise = null;
+    this.customIcons = null;
+    this.customIconsPromise = null;
   }
 
   /**
@@ -413,6 +415,46 @@ export class IconManager {
       });
 
     return this.svgIconsPromise;
+  }
+
+  /**
+   * Load custom SVG/PNG icons from assets/custom-icons/index.json
+   */
+  async loadCustomIcons() {
+    if (this.customIcons) {
+      return this.customIcons;
+    }
+    if (this.customIconsPromise) {
+      return this.customIconsPromise;
+    }
+
+    this.customIconsPromise = fetch('assets/custom-icons/index.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Custom icon index not found (${response.status})`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        const icons = Array.isArray(data) ? data : [];
+        this.customIcons = icons.map(icon => ({
+          name: icon.name || icon.file,
+          path: `assets/custom-icons/${icon.file}`,
+          keywords: (icon.keywords || icon.name || icon.file || '').toLowerCase()
+        }));
+        return this.customIcons;
+      })
+      .catch(error => {
+        console.warn('Failed to load custom icons:', error);
+        this.customIcons = [];
+        return [];
+      });
+
+    return this.customIconsPromise;
+  }
+
+  getCustomIcons() {
+    return this.customIcons || [];
   }
 
   /**
