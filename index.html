@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stream Deck Icon Generator</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="assets/fonts/Font-Awesome/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Stream Deck Icon Generator</h1>
+      <p>Create custom Stream Deck icons with transparent backgrounds</p>
+    </header>
+
+    <main class="app-layout">
+      <!-- Controls Panel -->
+      <aside class="controls-panel">
+        <!-- Button Type -->
+        <section class="control-group">
+          <h2>Button Type</h2>
+          <div class="toggle-buttons" id="buttonTypeToggle">
+            <button class="active" data-type="action">Action</button>
+            <button data-type="info">Info</button>
+          </div>
+        </section>
+
+        <!-- Icon Source -->
+        <section class="control-group">
+          <h2>Icon Source</h2>
+          <div class="toggle-buttons" id="iconSourceToggle">
+            <button class="active" data-source="fontawesome">Font Awesome</button>
+            <button data-source="material">Material Symbols</button>
+            <button data-source="upload">Upload</button>
+          </div>
+
+          <!-- Icon Library -->
+          <div class="icon-library" id="iconLibrary">
+            <input type="search" placeholder="Search icons..." id="iconSearch">
+            <div class="icon-grid" id="iconGrid"></div>
+          </div>
+
+          <!-- Upload Area -->
+          <div class="upload-area hidden" id="uploadArea">
+            <label for="iconUpload" class="upload-label">
+              <span class="upload-text">Choose Icon Image</span>
+              <input type="file" accept="image/*" id="iconUpload">
+            </label>
+          </div>
+        </section>
+
+        <!-- Text -->
+        <section class="control-group">
+          <h2>Text</h2>
+          <textarea id="buttonText" rows="3" placeholder="Enter button text">Button</textarea>
+
+          <div class="text-controls">
+            <div class="control-row">
+              <label for="textSize">Size: <span id="textSizeValue">48</span>px</label>
+              <input type="range" id="textSize" min="12" max="72" value="48">
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <!-- Preview Panel -->
+      <section class="preview-panel">
+        <h2>Preview</h2>
+
+        <!-- Color Preview Selector -->
+        <div class="color-previews">
+          <button class="color-btn active" data-color="#3D5B58" style="background: #3D5B58" title="Primary" aria-label="Primary color preview"></button>
+          <button class="color-btn" data-color="#373A36" style="background: #373A36" title="Secondary" aria-label="Secondary color preview"></button>
+          <button class="color-btn" data-color="#406B47" style="background: #406B47" title="Positive" aria-label="Positive color preview"></button>
+          <button class="color-btn" data-color="#892626" style="background: #892626" title="Warning" aria-label="Warning color preview"></button>
+          <button class="color-btn" data-color="#ebe717" style="background: #ebe717" title="Active" aria-label="Active color preview"></button>
+        </div>
+
+        <!-- Main Preview -->
+        <div class="canvas-container">
+          <canvas id="previewCanvas"></canvas>
+        </div>
+
+        <!-- Thumbnail Previews -->
+        <div class="thumbnail-previews">
+          <canvas class="thumbnail" data-color="#3D5B58" title="Primary"></canvas>
+          <canvas class="thumbnail" data-color="#373A36" title="Secondary"></canvas>
+          <canvas class="thumbnail" data-color="#406B47" title="Positive"></canvas>
+          <canvas class="thumbnail" data-color="#892626" title="Warning"></canvas>
+          <canvas class="thumbnail" data-color="#ebe717" title="Active"></canvas>
+        </div>
+
+        <!-- Export -->
+        <div class="export-controls">
+          <input type="text" id="filename" value="streamdeck-button" placeholder="Filename">
+          <button id="exportBtn" class="btn-primary">Export PNG (Transparent)</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
