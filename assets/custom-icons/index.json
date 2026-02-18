@@ -5,34 +5,9 @@
     "keywords": "Component 9 \u2013 4"
   },
   {
-    "file": "Icon ion-ios-arrow-back.svg",
-    "name": "Icon ion-ios-arrow-back",
-    "keywords": "Icon ion ios arrow back"
-  },
-  {
-    "file": "Pro7.svg",
-    "name": "Pro7",
-    "keywords": "Pro7"
-  },
-  {
     "file": "QLab.svg",
     "name": "QLab",
     "keywords": "QLab"
-  },
-  {
-    "file": "Resolume.svg",
-    "name": "Resolume",
-    "keywords": "Resolume"
-  },
-  {
-    "file": "Status-LyricOff.svg",
-    "name": "Status-LyricOff",
-    "keywords": "Status LyricOff"
-  },
-  {
-    "file": "Status-LyricOn.svg",
-    "name": "Status-LyricOn",
-    "keywords": "Status LyricOn"
   },
   {
     "file": "TP.svg",
@@ -40,14 +15,19 @@
     "keywords": "TP"
   },
   {
-    "file": "abletonlive.svg",
-    "name": "abletonlive",
-    "keywords": "abletonlive"
+    "file": "ableton-live.svg",
+    "name": "ableton-live",
+    "keywords": "ableton live"
   },
   {
-    "file": "arrow.svg",
-    "name": "arrow",
-    "keywords": "arrow"
+    "file": "arrow-back.svg",
+    "name": "arrow-back",
+    "keywords": "arrow back"
+  },
+  {
+    "file": "arrow-forward.svg",
+    "name": "arrow-forward",
+    "keywords": "arrow forward"
   },
   {
     "file": "companion.svg",
@@ -55,14 +35,14 @@
     "keywords": "companion"
   },
   {
-    "file": "digico.svg",
-    "name": "digico",
-    "keywords": "digico"
+    "file": "lyric-off.svg",
+    "name": "lyric-off",
+    "keywords": "lyric off"
   },
   {
-    "file": "hog4.svg",
-    "name": "hog4",
-    "keywords": "hog4"
+    "file": "lyric-on.svg",
+    "name": "lyric-on",
+    "keywords": "lyric on"
   },
   {
     "file": "preroll.svg",
@@ -70,14 +50,19 @@
     "keywords": "preroll"
   },
   {
+    "file": "propresenter.svg",
+    "name": "propresenter",
+    "keywords": "propresenter"
+  },
+  {
+    "file": "resolume-arena.svg",
+    "name": "resolume-arena",
+    "keywords": "resolume arena"
+  },
+  {
     "file": "ross.svg",
     "name": "ross",
     "keywords": "ross"
-  },
-  {
-    "file": "shure.svg",
-    "name": "shure",
-    "keywords": "shure"
   },
   {
     "file": "song-play.svg",
@@ -90,9 +75,44 @@
     "keywords": "video play"
   },
   {
-    "file": "youtube.svg",
-    "name": "youtube",
-    "keywords": "youtube"
+    "file": "Ross.png",
+    "name": "Ross",
+    "keywords": "Ross"
+  },
+  {
+    "file": "companion.png",
+    "name": "companion",
+    "keywords": "companion"
+  },
+  {
+    "file": "digico.png",
+    "name": "digico",
+    "keywords": "digico"
+  },
+  {
+    "file": "hog4.png",
+    "name": "hog4",
+    "keywords": "hog4"
+  },
+  {
+    "file": "propresenter.png",
+    "name": "propresenter",
+    "keywords": "propresenter"
+  },
+  {
+    "file": "qlab-5.png",
+    "name": "qlab-5",
+    "keywords": "qlab 5"
+  },
+  {
+    "file": "resolume-arena.png",
+    "name": "resolume-arena",
+    "keywords": "resolume arena"
+  },
+  {
+    "file": "shure.png",
+    "name": "shure",
+    "keywords": "shure"
   },
   {
     "file": "uplink.png",
