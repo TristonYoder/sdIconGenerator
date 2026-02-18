@@ -177,6 +177,11 @@ header p {
   transition: all 0.15s;
 }
 
+.icon-item.fa-icon {
+  font-family: 'Font Awesome 6 Free' !important;
+  font-weight: 900 !important;
+}
+
 .icon-item:hover {
   background: rgba(255, 255, 255, 0.1);
   transform: scale(1.1);

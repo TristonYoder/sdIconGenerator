@@ -237,8 +237,7 @@ function populateIconGrid(searchQuery = '') {
 
     if (state.iconLibrary === 'fontawesome') {
       iconItem.innerHTML = icon.char;
-      iconItem.style.fontFamily = 'Font Awesome 6 Free';
-      iconItem.style.fontWeight = '900';
+      iconItem.classList.add('fa-icon');
     } else if (state.iconLibrary === 'material') {
       iconItem.textContent = icon.char;
       iconItem.classList.add('material-symbols-outlined');
