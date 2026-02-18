@@ -36,25 +36,6 @@ body {
   padding: 1rem;
 }
 
-header {
-  text-align: center;
-  padding: 2rem 0;
-  border-bottom: 2px solid var(--border-color);
-  margin-bottom: 2rem;
-}
-
-header h1 {
-  margin: 0 0 0.5rem;
-  font-size: 2.5rem;
-  font-weight: 700;
-}
-
-header p {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 1.1rem;
-}
-
 .app-layout {
   display: grid;
   grid-template-columns: 400px 1fr;
@@ -379,32 +360,6 @@ input[type="range"]::-moz-range-thumb {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
-}
-
-.thumbnail-previews {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
-  padding: 1rem;
-  background: var(--bg-medium);
-  border-radius: var(--border-radius);
-}
-
-.thumbnail {
-  width: 96px;
-  height: 96px;
-  border: 2px solid var(--border-color);
-  border-radius: 36px;
-  cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-}
-
-.thumbnail:hover {
-  transform: scale(1.05);
-  border-color: var(--accent);
 }
 
 .export-controls {
