@@ -7,10 +7,8 @@ A web-based tool for creating consistent Stream Deck button icons.
 ## Features
 
 - **Two Button Types**: Action and Info buttons with distinct gradient backgrounds
-- **Multiple Icon Sources**:
-  - Font Awesome library with 90+ curated icons
-  - Material Symbols library with 90+ curated icons
-  - Upload your own custom images
+- **SVG Icon Library**: Search the full Font Awesome SVG set
+- **Custom Uploads**: Upload your own PNG/SVG images
 - **Multi-Color Preview**: See your icon on the 5 style guide colors
 - **Transparent Export**: Download as PNG with alpha channel (no background color)
 - **Real-time Preview**: All changes update instantly

@@ -29,7 +29,7 @@ const state = {
     bold: true
   },
   selectedPreviewColor: PREVIEW_COLORS.primary,
-  iconLibrary: 'fontawesome'
+  iconLibrary: 'svgpng'
 };
 
 // Global instances
@@ -49,6 +49,7 @@ async function init() {
   // Initialize components
   iconManager = new IconManager();
   imageExporter = new ImageExporter();
+  iconManager.setLibrary(state.iconLibrary);
 
   // Set up main canvas renderer at 2x resolution
   const mainCanvas = document.getElementById('previewCanvas');
@@ -65,7 +66,8 @@ async function init() {
     });
   });
 
-  // Set default icon
+  // Load SVG index and set default icon
+  await iconManager.loadSvgIcons();
   state.selectedIcon = iconManager.getDefaultIcon();
 
   // Set up event listeners
@@ -88,7 +90,6 @@ async function loadFonts() {
   try {
     await document.fonts.load('400 24px "Roboto Condensed"');
     await document.fonts.load('700 24px "Roboto Condensed"');
-    await document.fonts.load('400 24px "Material Symbols Outlined"');
     await document.fonts.load('900 24px "Font Awesome 6 Free"');
     await document.fonts.ready;
   } catch (error) {
@@ -114,7 +115,7 @@ function setupEventListeners() {
   // Icon source toggle
   const iconSourceButtons = document.querySelectorAll('#iconSourceToggle button');
   iconSourceButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', async () => {
       iconSourceButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const source = btn.getAttribute('data-source');
@@ -128,6 +129,8 @@ function setupEventListeners() {
 
         state.iconLibrary = source;
         iconManager.setLibrary(source);
+        await iconManager.loadSvgIcons();
+
         populateIconGrid();
 
         // Set default icon for the new library
@@ -140,7 +143,10 @@ function setupEventListeners() {
   // Icon search
   const iconSearch = document.getElementById('iconSearch');
   iconSearch.addEventListener('input', (e) => {
-    populateIconGrid(e.target.value);
+    const query = e.target.value;
+    iconManager.loadSvgIcons().then(() => {
+      populateIconGrid(query);
+    });
   });
 
   // Icon upload
@@ -262,32 +268,36 @@ function populateIconGrid(searchQuery = '') {
 
   const icons = iconManager.searchIcons(searchQuery);
 
+  if (icons.length === 0) {
+    const emptyState = document.createElement('div');
+    emptyState.className = 'icon-empty';
+    if (state.iconLibrary === 'svgpng' && (!searchQuery || searchQuery.trim() === '')) {
+      emptyState.textContent = 'Type to search for icons';
+    } else {
+      emptyState.textContent = 'No icons found';
+    }
+    iconGrid.appendChild(emptyState);
+    return;
+  }
+
   icons.forEach(icon => {
     const iconItem = document.createElement('div');
     iconItem.className = 'icon-item';
     iconItem.title = icon.name;
 
     // Set icon content and styling based on library
-    if (state.iconLibrary === 'fontawesome') {
-      iconItem.innerHTML = icon.char;
-      iconItem.classList.add('fa-icon');
-    } else if (state.iconLibrary === 'material') {
-      iconItem.textContent = icon.char;
-      iconItem.classList.add('material-symbols-outlined');
-    } else if (state.iconLibrary === 'lineicons') {
-      iconItem.innerHTML = icon.char;
-      iconItem.style.fontFamily = 'LineIcons';
-    } else if (state.iconLibrary === 'bootstrap') {
-      iconItem.innerHTML = icon.char;
-      iconItem.style.fontFamily = 'bootstrap-icons';
-    } else if (state.iconLibrary === 'ionicons') {
-      iconItem.innerHTML = icon.char;
-      iconItem.style.fontFamily = 'Ionicons';
+    if (state.iconLibrary === 'svgpng') {
+      const img = document.createElement('img');
+      img.src = icon.path;
+      img.alt = icon.name;
+      iconItem.classList.add('image-icon');
+      iconItem.appendChild(img);
     }
 
     // Highlight selected icon
-    if (state.selectedIcon && state.selectedIcon.type === state.iconLibrary &&
-        state.selectedIcon.character === icon.char) {
+    if (state.selectedIcon && state.iconLibrary === 'svgpng' &&
+        state.selectedIcon.type === 'image' &&
+        state.selectedIcon.path === icon.path) {
       iconItem.classList.add('selected');
     }
 
