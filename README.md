@@ -26,8 +26,8 @@ The preview system shows your icon on these 5 colors from the color palette:
 
 1. **Select Button Type**: Choose between Action or Info button backgrounds
 2. **Choose an Icon**:
-   - Browse Font Awesome or Material Symbols libraries
-   - Search for icons by name
+   - Search the full Font Awesome SVG library
+   - Pick from custom SVGs in `assets/custom-icons/`
    - Or upload your own image
 3. **Customize Icon**: Adjust the icon color using the color picker
 4. **Add Text**: Enter text in the lower third of the button
@@ -79,3 +79,16 @@ Requires modern browser support for:
 ## License
 
 MIT
+
+## Custom Icons
+
+To add your own SVGs:
+
+1. Drop SVG files in `assets/custom-icons/`
+2. Add entries to `assets/custom-icons/index.json`:
+
+```json
+[
+  { "file": "my-icon.svg", "name": "my-icon", "keywords": "custom mic audio" }
+]
+```
