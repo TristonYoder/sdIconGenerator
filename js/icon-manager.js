@@ -196,6 +196,114 @@ const MATERIAL_SYMBOLS = [
   { name: 'explore', char: 'explore', keywords: 'compass direction navigation' },
 ];
 
+/**
+ * Lineicons icon data
+ */
+const LINEICONS = [
+  { name: 'home', char: '\ue900', keywords: 'house main' },
+  { name: 'microphone', char: '\ue901', keywords: 'mic audio voice' },
+  { name: 'music', char: '\ue902', keywords: 'song audio note' },
+  { name: 'play', char: '\ue903', keywords: 'start media' },
+  { name: 'pause', char: '\ue904', keywords: 'stop media' },
+  { name: 'video', char: '\ue905', keywords: 'camera film' },
+  { name: 'camera', char: '\ue906', keywords: 'photo picture' },
+  { name: 'image', char: '\ue907', keywords: 'photo' },
+  { name: 'volume', char: '\ue908', keywords: 'sound audio' },
+  { name: 'cog', char: '\ue909', keywords: 'settings gear' },
+  { name: 'power', char: '\ue90a', keywords: 'shutdown off' },
+  { name: 'wifi', char: '\ue90b', keywords: 'network internet' },
+  { name: 'star', char: '\ue90c', keywords: 'favorite rating' },
+  { name: 'heart', char: '\ue90d', keywords: 'love like' },
+  { name: 'bell', char: '\ue90e', keywords: 'notification alert' },
+  { name: 'envelope', char: '\ue90f', keywords: 'mail email' },
+  { name: 'comment', char: '\ue910', keywords: 'chat message' },
+  { name: 'phone', char: '\ue911', keywords: 'call telephone' },
+  { name: 'user', char: '\ue912', keywords: 'person profile' },
+  { name: 'users', char: '\ue913', keywords: 'people group' },
+  { name: 'search', char: '\ue914', keywords: 'find magnify' },
+  { name: 'checkmark', char: '\ue915', keywords: 'tick confirm' },
+  { name: 'close', char: '\ue916', keywords: 'cancel x delete' },
+  { name: 'plus', char: '\ue917', keywords: 'add create' },
+  { name: 'minus', char: '\ue918', keywords: 'remove subtract' },
+  { name: 'arrow-up', char: '\ue919', keywords: 'direction navigate' },
+  { name: 'arrow-down', char: '\ue91a', keywords: 'direction navigate' },
+  { name: 'arrow-left', char: '\ue91b', keywords: 'back navigate' },
+  { name: 'arrow-right', char: '\ue91c', keywords: 'forward navigate' },
+  { name: 'menu', char: '\ue91d', keywords: 'hamburger bars' },
+];
+
+/**
+ * Bootstrap Icons data
+ */
+const BOOTSTRAP_ICONS = [
+  { name: 'house', char: '\uf425', keywords: 'home main' },
+  { name: 'mic', char: '\uf52c', keywords: 'microphone audio voice' },
+  { name: 'music-note', char: '\uf546', keywords: 'song audio' },
+  { name: 'play', char: '\uf5e7', keywords: 'start media' },
+  { name: 'pause', char: '\uf5ba', keywords: 'stop media' },
+  { name: 'camera-video', char: '\uf1d5', keywords: 'video camera' },
+  { name: 'camera', char: '\uf1d4', keywords: 'photo picture' },
+  { name: 'image', char: '\uf447', keywords: 'photo' },
+  { name: 'volume-up', char: '\uf688', keywords: 'sound audio' },
+  { name: 'gear', char: '\uf3e5', keywords: 'settings cog' },
+  { name: 'power', char: '\uf5f8', keywords: 'shutdown off' },
+  { name: 'wifi', char: '\uf68b', keywords: 'network internet' },
+  { name: 'star', char: '\uf628', keywords: 'favorite rating' },
+  { name: 'heart', char: '\uf417', keywords: 'love like' },
+  { name: 'bell', char: '\uf11e', keywords: 'notification alert' },
+  { name: 'envelope', char: '\uf32f', keywords: 'mail email' },
+  { name: 'chat', char: '\uf1ec', keywords: 'comment message' },
+  { name: 'telephone', char: '\uf651', keywords: 'phone call' },
+  { name: 'person', char: '\uf5cd', keywords: 'user profile' },
+  { name: 'people', char: '\uf5ca', keywords: 'users group' },
+  { name: 'search', char: '\uf615', keywords: 'find magnify' },
+  { name: 'check', char: '\uf1ed', keywords: 'tick confirm' },
+  { name: 'x', char: '\uf69a', keywords: 'close cancel delete' },
+  { name: 'plus', char: '\uf5ef', keywords: 'add create' },
+  { name: 'dash', char: '\uf274', keywords: 'minus remove' },
+  { name: 'arrow-up', char: '\uf148', keywords: 'direction navigate' },
+  { name: 'arrow-down', char: '\uf145', keywords: 'direction navigate' },
+  { name: 'arrow-left', char: '\uf146', keywords: 'back navigate' },
+  { name: 'arrow-right', char: '\uf147', keywords: 'forward navigate' },
+  { name: 'list', char: '\uf4ea', keywords: 'menu hamburger' },
+];
+
+/**
+ * Ionicons data
+ */
+const IONICONS = [
+  { name: 'home', char: '\uf448', keywords: 'house main' },
+  { name: 'mic', char: '\uf461', keywords: 'microphone audio voice' },
+  { name: 'musical-note', char: '\uf46b', keywords: 'music song' },
+  { name: 'play', char: '\uf488', keywords: 'start media' },
+  { name: 'pause', char: '\uf478', keywords: 'stop media' },
+  { name: 'videocam', char: '\uf4d1', keywords: 'video camera' },
+  { name: 'camera', char: '\uf3c1', keywords: 'photo picture' },
+  { name: 'image', char: '\uf44e', keywords: 'photo' },
+  { name: 'volume-high', char: '\uf4d6', keywords: 'sound audio' },
+  { name: 'settings', char: '\uf4a7', keywords: 'cog gear' },
+  { name: 'power', char: '\uf48e', keywords: 'shutdown off' },
+  { name: 'wifi', char: '\uf4da', keywords: 'network internet' },
+  { name: 'star', char: '\uf4b3', keywords: 'favorite rating' },
+  { name: 'heart', char: '\uf443', keywords: 'love like' },
+  { name: 'notifications', char: '\uf471', keywords: 'bell alert' },
+  { name: 'mail', char: '\uf45a', keywords: 'envelope email' },
+  { name: 'chatbubble', char: '\uf3c5', keywords: 'comment message' },
+  { name: 'call', char: '\uf3bf', keywords: 'phone telephone' },
+  { name: 'person', char: '\uf47e', keywords: 'user profile' },
+  { name: 'people', char: '\uf47c', keywords: 'users group' },
+  { name: 'search', char: '\uf4a5', keywords: 'find magnify' },
+  { name: 'checkmark', char: '\uf3fd', keywords: 'tick confirm' },
+  { name: 'close', char: '\uf406', keywords: 'cancel x delete' },
+  { name: 'add', char: '\uf389', keywords: 'plus create' },
+  { name: 'remove', char: '\uf4a0', keywords: 'minus subtract' },
+  { name: 'arrow-up', char: '\uf3d8', keywords: 'direction navigate' },
+  { name: 'arrow-down', char: '\uf3d0', keywords: 'direction navigate' },
+  { name: 'arrow-back', char: '\uf3cf', keywords: 'left navigate' },
+  { name: 'arrow-forward', char: '\uf3d1', keywords: 'right navigate' },
+  { name: 'menu', char: '\uf45d', keywords: 'hamburger bars' },
+];
+
 export class IconManager {
   constructor() {
     this.currentLibrary = 'fontawesome';
@@ -211,6 +319,12 @@ export class IconManager {
       this.icons = FONT_AWESOME_ICONS;
     } else if (library === 'material') {
       this.icons = MATERIAL_SYMBOLS;
+    } else if (library === 'lineicons') {
+      this.icons = LINEICONS;
+    } else if (library === 'bootstrap') {
+      this.icons = BOOTSTRAP_ICONS;
+    } else if (library === 'ionicons') {
+      this.icons = IONICONS;
     }
   }
 
@@ -243,21 +357,24 @@ export class IconManager {
     const icon = this.icons.find(i => i.name === iconName);
     if (!icon) return null;
 
-    if (this.currentLibrary === 'fontawesome') {
-      return {
-        type: 'fontawesome',
-        fontFamily: 'Font Awesome 6 Free',
-        character: icon.char,
-        color: '#FFFFFF'
-      };
-    } else if (this.currentLibrary === 'material') {
-      return {
-        type: 'material',
-        fontFamily: 'Material Symbols Outlined',
-        character: icon.char,
-        color: '#FFFFFF'
-      };
-    }
+    const libraryConfig = {
+      fontawesome: { type: 'fontawesome', fontFamily: 'Font Awesome 6 Free', weight: '900' },
+      material: { type: 'material', fontFamily: 'Material Symbols Outlined', weight: '400' },
+      lineicons: { type: 'lineicons', fontFamily: 'LineIcons', weight: '400' },
+      bootstrap: { type: 'bootstrap', fontFamily: 'bootstrap-icons', weight: '400' },
+      ionicons: { type: 'ionicons', fontFamily: 'Ionicons', weight: '400' }
+    };
+
+    const config = libraryConfig[this.currentLibrary];
+    if (!config) return null;
+
+    return {
+      type: config.type,
+      fontFamily: config.fontFamily,
+      character: icon.char,
+      color: '#FFFFFF',
+      weight: config.weight
+    };
   }
 
   /**

@@ -96,26 +96,37 @@ export class ButtonRenderer {
     const iconTop = this.margin;
     const iconCenterY = iconTop + this.iconSize / 2;
 
-    if (iconOptions.type === 'fontawesome' || iconOptions.type === 'material') {
-      // Render font icon
-      const fontWeight = iconOptions.type === 'fontawesome' ? '900' : '400';
+    if (iconOptions.type === 'upload' && iconOptions.dataURL) {
+      // Render uploaded image - scale proportionally, don't stretch
+      const img = await this.loadImageFromDataURL(iconOptions.dataURL);
+
+      // Calculate scaled dimensions maintaining aspect ratio
+      const imgAspect = img.width / img.height;
+      let drawWidth, drawHeight;
+
+      if (imgAspect > 1) {
+        // Wider than tall
+        drawWidth = this.iconSize;
+        drawHeight = this.iconSize / imgAspect;
+      } else {
+        // Taller than wide or square
+        drawHeight = this.iconSize;
+        drawWidth = this.iconSize * imgAspect;
+      }
+
+      // Center the image within the icon space
+      const drawX = centerX - drawWidth / 2;
+      const drawY = iconCenterY - drawHeight / 2;
+
+      this.ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
+    } else {
+      // Render font icon (fontawesome, material, lineicons, bootstrap, ionicons)
+      const fontWeight = iconOptions.weight || '400';
       this.ctx.font = `${fontWeight} ${this.iconSize}px "${iconOptions.fontFamily}"`;
       this.ctx.fillStyle = iconOptions.color;
       this.ctx.textAlign = 'center';
       this.ctx.textBaseline = 'middle';
       this.ctx.fillText(iconOptions.character, centerX, iconCenterY);
-    } else if (iconOptions.type === 'upload' && iconOptions.dataURL) {
-      // Render uploaded image
-      const img = await this.loadImageFromDataURL(iconOptions.dataURL);
-
-      // Draw icon with margin from top, centered horizontally
-      this.ctx.drawImage(
-        img,
-        centerX - this.iconSize/2,
-        iconTop,
-        this.iconSize,
-        this.iconSize
-      );
     }
   }
 

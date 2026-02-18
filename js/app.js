@@ -235,20 +235,28 @@ function populateIconGrid(searchQuery = '') {
     iconItem.className = 'icon-item';
     iconItem.title = icon.name;
 
+    // Set icon content and styling based on library
     if (state.iconLibrary === 'fontawesome') {
       iconItem.innerHTML = icon.char;
       iconItem.classList.add('fa-icon');
     } else if (state.iconLibrary === 'material') {
       iconItem.textContent = icon.char;
       iconItem.classList.add('material-symbols-outlined');
+    } else if (state.iconLibrary === 'lineicons') {
+      iconItem.innerHTML = icon.char;
+      iconItem.style.fontFamily = 'LineIcons';
+    } else if (state.iconLibrary === 'bootstrap') {
+      iconItem.innerHTML = icon.char;
+      iconItem.style.fontFamily = 'bootstrap-icons';
+    } else if (state.iconLibrary === 'ionicons') {
+      iconItem.innerHTML = icon.char;
+      iconItem.style.fontFamily = 'Ionicons';
     }
 
     // Highlight selected icon
-    if (state.selectedIcon && state.selectedIcon.type === state.iconLibrary) {
-      if ((state.iconLibrary === 'fontawesome' && state.selectedIcon.character === icon.char) ||
-          (state.iconLibrary === 'material' && state.selectedIcon.character === icon.char)) {
-        iconItem.classList.add('selected');
-      }
+    if (state.selectedIcon && state.selectedIcon.type === state.iconLibrary &&
+        state.selectedIcon.character === icon.char) {
+      iconItem.classList.add('selected');
     }
 
     iconItem.addEventListener('click', () => {

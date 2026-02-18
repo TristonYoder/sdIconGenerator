@@ -88,6 +88,12 @@ header p {
   margin-bottom: 1rem;
 }
 
+.icon-source-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
 .toggle-buttons button {
   flex: 1;
   padding: 0.75rem 1rem;
