@@ -74,6 +74,9 @@ async function init() {
   // Populate icon grid
   populateIconGrid();
 
+  // Initialize filename from default text
+  updateFilenameFromText(state.text);
+
   // Initial render
   await renderAllPreviews();
 }
@@ -162,6 +165,7 @@ function setupEventListeners() {
   const buttonText = document.getElementById('buttonText');
   buttonText.addEventListener('input', (e) => {
     state.text = e.target.value;
+    updateFilenameFromText(state.text);
     debouncedRender();
   });
 
@@ -219,6 +223,33 @@ function setupEventListeners() {
       }, 2000);
     }
   });
+}
+
+/**
+ * Update the filename input based on button text.
+ */
+function updateFilenameFromText(text) {
+  const filenameInput = document.getElementById('filename');
+  const sanitized = (text || '')
+    .replace(/[^a-zA-Z0-9]+/g, ' ')
+    .trim();
+
+  if (!sanitized) {
+    return;
+  }
+
+  const parts = sanitized.split(/\s+/);
+  const camel = parts
+    .map((part, index) => {
+      const lower = part.toLowerCase();
+      if (index === 0) {
+        return lower;
+      }
+      return lower.charAt(0).toUpperCase() + lower.slice(1);
+    })
+    .join('');
+
+  filenameInput.value = `sd${camel.charAt(0).toUpperCase()}${camel.slice(1)}`;
 }
 
 /**
