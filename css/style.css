@@ -415,15 +415,23 @@ input[type="range"]::-moz-range-thumb {
   border-radius: var(--border-radius);
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.btn-primary i {
+  font-size: 1.25rem;
 }
 
 .btn-primary:hover {
   background: var(--accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4);
+  box-shadow: 0 4px 12px rgba(235, 231, 23, 0.4);
 }
 
 .btn-primary:active {
