@@ -2,19 +2,19 @@
   --bg-dark: #1e1e1e;
   --bg-medium: #2a2a2a;
   --bg-light: #2d2d2d;
-  --accent: #3D5B58;
-  --accent-hover: #406B47;
+  --accent: #ebe717;
+  --accent-hover: #f5f052;
   --text: #ffffff;
   --text-muted: #aaaaaa;
   --border-color: #444;
   --border-radius: 8px;
 
   /* Color palette */
+  --color-active: #ebe717;
   --color-primary: #3D5B58;
   --color-secondary: #373A36;
   --color-positive: #406B47;
   --color-warning: #892626;
-  --color-active: #ebe717;
 }
 
 * {
@@ -183,7 +183,7 @@ header p {
 
 .icon-item.selected {
   border-color: var(--accent);
-  background: rgba(61, 91, 88, 0.3);
+  background: rgba(235, 231, 23, 0.2);
 }
 
 /* Upload Area */
