@@ -30,8 +30,8 @@ export class ButtonRenderer {
     this.ctx.fillStyle = backgroundColor;
     this.ctx.fillRect(0, 0, this.size, this.size);
 
-    // Render the button on top
-    await this.renderButton(options);
+    // Render the button on top with adapted colors
+    await this.renderButton(options, backgroundColor);
   }
 
   /**
@@ -41,18 +41,25 @@ export class ButtonRenderer {
     // Clear to transparent
     this.ctx.clearRect(0, 0, this.size, this.size);
 
-    // Render the button
-    await this.renderButton(options);
+    // Render the button (no background color for export, use default white)
+    await this.renderButton(options, null);
   }
 
   /**
    * Core rendering logic
    */
-  async renderButton(options) {
+  async renderButton(options, backgroundColor = null) {
     // 1. Draw button base (Action/Info gradient)
     await this.drawBase(options.buttonType);
 
-    // 2. Calculate text layout to determine icon size
+    // 2. Determine text and icon colors based on background
+    const activeColor = '#ebe717';
+    const primaryColor = '#3D5B58';
+    const isActiveBackground = backgroundColor && backgroundColor.toLowerCase() === activeColor.toLowerCase();
+    const textColor = isActiveBackground ? primaryColor : '#FFFFFF';
+    const iconColor = isActiveBackground ? primaryColor : '#FFFFFF';
+
+    // 3. Calculate text layout to determine icon size
     let textHeight = 0;
     let textLayout = null;
     if (options.text && options.text.trim() !== '') {
@@ -60,17 +67,19 @@ export class ButtonRenderer {
       textHeight = textLayout.totalHeight;
     }
 
-    // 3. Calculate icon size based on available space
+    // 4. Calculate icon size based on available space
     this.calculateIconSize(textHeight);
 
-    // 4. Draw icon if present
+    // 5. Draw icon if present (with adapted color)
     if (options.icon && options.icon.type) {
-      await this.drawIcon(options.icon);
+      const iconWithColor = { ...options.icon, color: iconColor };
+      await this.drawIcon(iconWithColor);
     }
 
-    // 5. Draw text if present
+    // 6. Draw text if present (with adapted color)
     if (options.text && options.text.trim() !== '') {
-      this.drawText(options.text, options.textConfig, textLayout);
+      const configWithColor = { ...options.textConfig, color: textColor };
+      this.drawText(options.text, configWithColor, textLayout);
     }
   }
 
