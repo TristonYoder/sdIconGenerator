@@ -202,23 +202,24 @@ function setupEventListeners() {
 
   // Export button
   const exportBtn = document.getElementById('exportBtn');
+  const exportBtnOriginalHtml = exportBtn.innerHTML;
   exportBtn.addEventListener('click', async () => {
     const filename = document.getElementById('filename').value || 'streamdeck-button';
     exportBtn.disabled = true;
-    exportBtn.textContent = 'Exporting...';
+    exportBtn.innerHTML = '<i class="fa-solid fa-download"></i><span>Exporting...</span>';
 
     try {
       await imageExporter.export(state, filename);
-      exportBtn.textContent = 'Exported!';
+      exportBtn.innerHTML = '<i class="fa-solid fa-download"></i><span>Exported!</span>';
       setTimeout(() => {
-        exportBtn.textContent = 'Export PNG (Transparent)';
+        exportBtn.innerHTML = exportBtnOriginalHtml;
         exportBtn.disabled = false;
       }, 2000);
     } catch (error) {
       console.error('Export failed:', error);
-      exportBtn.textContent = 'Export Failed';
+      exportBtn.innerHTML = '<i class="fa-solid fa-download"></i><span>Export Failed</span>';
       setTimeout(() => {
-        exportBtn.textContent = 'Export PNG (Transparent)';
+        exportBtn.innerHTML = exportBtnOriginalHtml;
         exportBtn.disabled = false;
       }, 2000);
     }
