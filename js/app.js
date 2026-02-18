@@ -38,6 +38,7 @@ let thumbnailRenderers = [];
 let iconManager;
 let imageExporter;
 let renderDebounceTimer;
+let lastSearchQuery = '';
 
 /**
  * Initialize the application
@@ -66,8 +67,11 @@ async function init() {
     });
   });
 
-  // Load SVG index and set default icon
-  await iconManager.loadSvgIcons();
+  // Load SVG index and custom icons, then set default icon
+  await Promise.all([
+    iconManager.loadSvgIcons(),
+    iconManager.loadCustomIcons()
+  ]);
   state.selectedIcon = iconManager.getDefaultIcon();
 
   // Set up event listeners
@@ -75,6 +79,7 @@ async function init() {
 
   // Populate icon grid
   populateIconGrid();
+  renderCustomIconGrid();
 
   // Initialize filename from default text
   updateFilenameFromText(state.text);
@@ -132,6 +137,7 @@ function setupEventListeners() {
         await iconManager.loadSvgIcons();
 
         populateIconGrid();
+        renderCustomIconGrid();
 
         // Set default icon for the new library
         state.selectedIcon = iconManager.getDefaultIcon();
@@ -144,6 +150,7 @@ function setupEventListeners() {
   const iconSearch = document.getElementById('iconSearch');
   iconSearch.addEventListener('input', (e) => {
     const query = e.target.value;
+    lastSearchQuery = query;
     iconManager.loadSvgIcons().then(() => {
       populateIconGrid(query);
     });
@@ -280,37 +287,53 @@ function populateIconGrid(searchQuery = '') {
     return;
   }
 
+  renderImageIconGrid(icons, iconGrid, searchQuery);
+}
+
+function renderCustomIconGrid() {
+  const customGrid = document.getElementById('customIconGrid');
+  customGrid.innerHTML = '';
+  const customIcons = iconManager.getCustomIcons();
+
+  if (customIcons.length === 0) {
+    const emptyState = document.createElement('div');
+    emptyState.className = 'icon-empty';
+    emptyState.textContent = 'No custom icons added';
+    customGrid.appendChild(emptyState);
+    return;
+  }
+
+  renderImageIconGrid(customIcons, customGrid, lastSearchQuery);
+}
+
+function renderImageIconGrid(icons, gridElement, searchQuery) {
   icons.forEach(icon => {
     const iconItem = document.createElement('div');
     iconItem.className = 'icon-item';
     iconItem.title = icon.name;
 
-    // Set icon content and styling based on library
-    if (state.iconLibrary === 'svgpng') {
-      const img = document.createElement('img');
-      img.src = icon.path;
-      img.alt = icon.name;
-      iconItem.classList.add('image-icon');
-      iconItem.appendChild(img);
-    }
+    const img = document.createElement('img');
+    img.src = icon.path;
+    img.alt = icon.name;
+    iconItem.classList.add('image-icon');
+    iconItem.appendChild(img);
 
-    // Highlight selected icon
-    if (state.selectedIcon && state.iconLibrary === 'svgpng' &&
-        state.selectedIcon.type === 'image' &&
+    if (state.selectedIcon && state.selectedIcon.type === 'image' &&
         state.selectedIcon.path === icon.path) {
       iconItem.classList.add('selected');
     }
 
     iconItem.addEventListener('click', () => {
-      state.selectedIcon = iconManager.getIconData(icon.name);
-      if (state.selectedIcon) {
-        state.selectedIcon.color = '#FFFFFF';
-      }
-      populateIconGrid(searchQuery); // Refresh to update selection
+      state.selectedIcon = {
+        type: 'image',
+        path: icon.path
+      };
+      populateIconGrid(searchQuery);
+      renderCustomIconGrid();
       debouncedRender();
     });
 
-    iconGrid.appendChild(iconItem);
+    gridElement.appendChild(iconItem);
   });
 }
 

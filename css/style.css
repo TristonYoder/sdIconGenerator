@@ -134,6 +134,30 @@ body {
   border: 1px solid var(--border-color);
 }
 
+.custom-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.custom-icons-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.custom-icons-hint {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.custom-icon-grid {
+  max-height: 140px;
+}
+
 .icon-empty {
   grid-column: 1 / -1;
   padding: 1.5rem 1rem;
