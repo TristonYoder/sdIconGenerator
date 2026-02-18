@@ -2,6 +2,8 @@
 
 A web-based tool for creating consistent Stream Deck button icons.
 
+![Screenshot](screenshot.png)
+
 ## Features
 
 - **Two Button Types**: Action and Info buttons with distinct gradient backgrounds
