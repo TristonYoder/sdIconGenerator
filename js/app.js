@@ -23,7 +23,7 @@ const state = {
   text: 'Button',
   textConfig: {
     font: 'Roboto Condensed',
-    size: 48,
+    size: 64,
     color: '#FFFFFF',
     alignment: 'center',
     bold: true
