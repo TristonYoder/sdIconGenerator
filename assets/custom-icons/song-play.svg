@@ -1,0 +1,15 @@
+<svg id="Play_Song_Icon" data-name="Play Song Icon" xmlns="http://www.w3.org/2000/svg" width="78.368" height="66.815" viewBox="0 0 78.368 66.815">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Icon_fa-regular-circle-play" data-name="Icon fa-regular-circle-play">
+    <path id="Icon_fa-regular-circle-play-2" data-name="Icon fa-regular-circle-play" class="cls-1" d="M22.663,17.7a2.892,2.892,0,0,1,2.925.06L42.919,28.356a2.891,2.891,0,0,1,0,4.935L25.588,43.882a2.92,2.92,0,0,1-2.925.06,2.871,2.871,0,0,1-1.48-2.515V20.22A2.871,2.871,0,0,1,22.663,17.7Z" transform="translate(-21.183 -17.337)"/>
+  </g>
+  <g id="Icon_fa-solid-music" data-name="Icon fa-solid-music" transform="translate(11.56)">
+    <path id="Icon_fa-solid-music-2" data-name="Icon fa-solid-music" class="cls-1" d="M65.125.825a4.184,4.184,0,0,1,1.683,3.353V48.021c0,5.767-5.611,10.439-12.526,10.439S41.755,53.789,41.755,48.021s5.611-10.439,12.526-10.439a14.549,14.549,0,0,1,4.175.6v-19l-33.4,10.021V56.372c0,5.767-5.611,10.439-12.526,10.439S0,62.14,0,56.372,5.611,45.934,12.526,45.934a14.549,14.549,0,0,1,4.175.6V16.705A4.2,4.2,0,0,1,19.677,12.7L61.432.173a4.153,4.153,0,0,1,3.693.652Z" transform="translate(0 0.004)"/>
+  </g>
+</svg>
