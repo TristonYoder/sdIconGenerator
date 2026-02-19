@@ -1,10 +1,5 @@
 [
   {
-    "file": "Component 9 \u2013 4.svg",
-    "name": "Component 9 \u2013 4",
-    "keywords": "Component 9 \u2013 4"
-  },
-  {
     "file": "QLab.svg",
     "name": "QLab",
     "keywords": "QLab"
@@ -75,14 +70,9 @@
     "keywords": "video play"
   },
   {
-    "file": "Ross.png",
-    "name": "Ross",
-    "keywords": "Ross"
-  },
-  {
-    "file": "companion.png",
-    "name": "companion",
-    "keywords": "companion"
+    "file": "video-stop.svg",
+    "name": "video-stop",
+    "keywords": "video stop"
   },
   {
     "file": "digico.png",
@@ -95,9 +85,9 @@
     "keywords": "hog4"
   },
   {
-    "file": "qlab-5.png",
-    "name": "qlab-5",
-    "keywords": "qlab 5"
+    "file": "ma.png",
+    "name": "ma",
+    "keywords": "ma"
   },
   {
     "file": "shure.png",
