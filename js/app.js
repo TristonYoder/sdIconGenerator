@@ -88,6 +88,9 @@ async function init() {
   // Initialize filename from default text
   updateFilenameFromText(state.text);
 
+  // Update hex display with initial color
+  updateHexDisplay(state.selectedPreviewColor);
+
   // Initial render
   await renderAllPreviews();
 }
@@ -189,6 +192,7 @@ function setupEventListeners() {
       colorButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       state.selectedPreviewColor = btn.getAttribute('data-color');
+      updateHexDisplay(state.selectedPreviewColor);
       renderMainPreview();
     });
   });
@@ -200,6 +204,7 @@ function setupEventListeners() {
       colorButtons.forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-color') === color);
       });
+      updateHexDisplay(state.selectedPreviewColor);
       renderMainPreview();
     });
   });
@@ -228,6 +233,16 @@ function setupEventListeners() {
       }, 2000);
     }
   });
+}
+
+/**
+ * Update the hex code display
+ */
+function updateHexDisplay(hexColor) {
+  const hexDisplay = document.getElementById('hexDisplay');
+  if (hexDisplay) {
+    hexDisplay.textContent = hexColor.toUpperCase();
+  }
 }
 
 /**

@@ -460,6 +460,19 @@ input[type="range"]::-moz-range-thumb {
   image-rendering: crisp-edges;
 }
 
+.hex-display {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  padding: 0.75rem;
+  background: var(--bg-medium);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  letter-spacing: 0.5px;
+  font-family: 'Roboto Condensed', monospace;
+}
+
 .export-controls {
   display: flex;
   gap: 1rem;
